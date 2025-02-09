@@ -12,16 +12,16 @@ let score = 5;
 
 // ✅ Messages List
 const messages = [
-    "collect it baby girl",
-    "you are so cool",
-    "you are so funny",
-    "i appreciate you a lot",
-    "youre sexy?",
-    "ok phew thought u might not finish it"
+"get the flower ni-",
+"you're doing so well ong",
+"fr fr ong",
+"go little one almost there",
+"last one :>",
+"goodjobbb thats my baby"
 ];
 
 // ✅ Load Sound
-const scurrySound = new Audio("rat.mp3");
+const scurrySound = new Audio("Apple.mp3");
 scurrySound.volume = 1.0;
 scurrySound.playbackRate = 2.5;
 
@@ -54,9 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     yesButton.addEventListener("click", function () {
-        alert("YAYYYYY!!! 😍🎉"); // ✅ Show YAYYYY Alert
-        document.body.innerHTML = `<img src="HAPPY.jpeg" class="final-image">`;
-    });
+        alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
+        document.body.innerHTML = `
+        <div style="text-align: center;">
+            <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines%20card.pdf" download>
+                <img src="Pdoc squared (5).png" class="final-image" alt="Click to Download">
+            </a>
+            <p>Click the image to download your special Valentine’s Card ❤️</p>
+        </div>
+    `;
 });
 
 
