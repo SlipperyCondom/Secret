@@ -111,14 +111,14 @@ function setupGamePage() {
     document.getElementById("right").addEventListener("click", () => moveRat("ArrowRight"));
 
     // ✅ Function to Redirect
-    function goToValentinePage() {
-        window.location.href = "valentine.html";
-    }
+    
 
     // ✅ Initial Flower Placement
     respawnFlower();
 }
-
+function goToValentinePage() {
+        window.location.href = "valentine.html";
+    }
 // ✅ Valentine Page Setup
 function setupValentinePage() {
     let noButton = document.getElementById("no-button");
