@@ -24,7 +24,7 @@ const messages = [
 // ✅ Load Sound
 const scurrySound = new Audio("Apple.mp3");
 scurrySound.volume = 1.0;
-scurrySound.playbackRate = 2.5;
+scurrySound.playbackRate = 1.5;
 
 function playScurrySound() {
     scurrySound.currentTime = 0;  // ✅ Restart sound immediately
