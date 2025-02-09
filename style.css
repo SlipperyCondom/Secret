@@ -33,16 +33,17 @@ body {
     max-width: 50px;
     max-height: 50px;
     transition: all 0.1s ease-out;
+    z-index: 10; /* 🔥 Ensures rat is above flowers */
 }
-
-/* ✅ FLOWERS */
 #flower {
     position: absolute;
     width: 10vw;
     height: 10vw;
     max-width: 40px;
     max-height: 40px;
+    z-index: 5; /* 🔥 Keeps flowers behind the rat */
 }
+
 
 /* ✅ MESSAGE DISPLAY */
 #message {
