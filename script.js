@@ -34,7 +34,7 @@ function setupGamePage() {
     // ✅ Load Sound
     const scurrySound = new Audio("Apple.mp3");
     scurrySound.volume = 1.0;
-    scurrySound.playbackRate = 1.5;
+    scurrySound.playbackRate = 1.0;
 
     function playScurrySound() {
         scurrySound.currentTime = 0; // ✅ Restart sound immediately
@@ -145,7 +145,7 @@ function setupValentinePage() {
         document.body.innerHTML = `
         <div style="text-align: center;">
             <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
-                <img src="Pdoc_squared_5.png" class="final-image" alt="Click to Download">
+                <img src="Pdoc_squared_(5).png" class="final-image" alt="Click to Download">
             </a>
             <p>Click the image to download your special Valentine’s Card ❤️</p>
         </div>
