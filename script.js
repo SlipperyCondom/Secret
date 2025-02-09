@@ -133,7 +133,7 @@ function sayYes() {
         <div class="valentine-container">
             <h1>YAY!! ❤️🐭💘</h1>
             <p>You're the best, my Valentine! 🎉</p>
-            <img class="final-image" src="HAPPY.jpeg" alt="HAPPY">
+            <img class="final-image" src="Pdoc squared (5).png" alt="HAPPY">
         </div>
     `;
 }
