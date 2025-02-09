@@ -4,24 +4,21 @@ const flower = document.getElementById("flower");
 const message = document.getElementById("message");
 const scoreDisplay = document.getElementById("score");
 const nextButton = document.getElementById("next-button");
-document.getElementById("up").addEventListener("click", () => moveRat("ArrowUp"));
-document.getElementById("down").addEventListener("click", () => moveRat("ArrowDown"));
-document.getElementById("left").addEventListener("click", () => moveRat("ArrowLeft"));
-document.getElementById("right").addEventListener("click", () => moveRat("ArrowRight"));
 
 let ratX = 175, ratY = 175;
 const speed = 50;
 const gameSize = 400;
 let score = 5;
+let noClickCount = 0;  // ✅ Define globally
 
 // ✅ Messages List
 const messages = [
-"get the flower ni-",
-"you're doing so well ong",
-"fr fr ong",
-"go little one almost there",
-"last one :>",
-"goodjobbb thats my baby"
+    "get the flower!",
+    "you're doing so well ong",
+    "fr fr ong",
+    "go little one almost there",
+    "last one :>",
+    "goodjobbb thats my baby"
 ];
 
 // ✅ Load Sound
@@ -30,45 +27,28 @@ scurrySound.volume = 1.0;
 scurrySound.playbackRate = 2.5;
 
 function playScurrySound() {
-    let newSound = scurrySound.cloneNode(); 
-    newSound.volume = 1.0;
-    newSound.play().catch(e => console.error("Sound error:", e));
+    scurrySound.currentTime = 0;  // ✅ Restart sound immediately
+    scurrySound.play().catch(e => console.error("Sound error:", e));
 }
 
+// ✅ Move Rat Function
+function moveRat(direction) {
+    if (direction === "ArrowUp" && ratY > 0) ratY -= speed;
+    if (direction === "ArrowDown" && ratY < gameSize - 50) ratY += speed;
+    if (direction === "ArrowLeft" && ratX > 0) ratX -= speed;
+    if (direction === "ArrowRight" && ratX < gameSize - 50) ratX += speed;
 
-document.addEventListener("DOMContentLoaded", function () {
-    let noButton = document.getElementById("no-button");
-    let yesButton = document.getElementById("yes-button");
-    let message = document.getElementById("valentine-message");
-    let noClickCount = 0; // Track "No" clicks
+    rat.style.left = `${ratX}px`;
+    rat.style.top = `${ratY}px`;
+    console.log(`Rat Position: X=${ratX}, Y=${ratY}`);
 
-    noButton.addEventListener("click", function () {
-        noClickCount++;
+    // ✅ Add Animation
+    rat.classList.add("scurry");
+    setTimeout(() => rat.classList.remove("scurry"), 100);
 
-        if (noClickCount < 5) {
-            let newSize = Math.max(5, parseFloat(window.getComputedStyle(noButton).fontSize) * 0.7);
-            noButton.style.fontSize = `${newSize}px`;
-            noButton.style.padding = `${newSize / 2}px ${newSize}px`; 
-        } else {
-            // 💔 After 5 clicks → Show sad alert & hide buttons
-            alert("🥺 Okay... I understand... 💔");
-            noButton.style.display = "none"; // Hide No button
-            yesButton.style.display = "none"; // Hide Yes button
-        }
-    });
-
-    yesButton.addEventListener("click", function () {
-        alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
-        document.body.innerHTML = `
-        <div style="text-align: center;">
-            <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines%20card.pdf" download>
-                <img src="Pdoc squared (5).png" class="final-image" alt="Click to Download">
-            </a>
-            <p>Click the image to download your special Valentine’s Card ❤️</p>
-        </div>
-    `;
-});
-
+    playScurrySound();
+    checkCollision();
+}
 
 // ✅ Position Rat and Flower
 rat.style.left = `${ratX}px`;
@@ -84,24 +64,6 @@ function respawnFlower() {
         flower.style.display = "none";
         nextButton.style.display = "block"; // Show Next Button
     }
-}
-
-// ✅ Move Rat Function
-function moveRat(direction) {
-    if (direction === "ArrowUp" && ratY > 0) ratY -= speed;
-    if (direction === "ArrowDown" && ratY < gameSize - 50) ratY += speed;
-    if (direction === "ArrowLeft" && ratX > 0) ratX -= speed;
-    if (direction === "ArrowRight" && ratX < gameSize - 50) ratX += speed;
-
-    rat.style.left = `${ratX}px`;
-    rat.style.top = `${ratY}px`;
-    console.log(`Rat Position: X=${ratX}, Y=${ratY}`);
-    // ✅ Add Animation
-    rat.classList.add("scurry");
-    setTimeout(() => rat.classList.remove("scurry"), 100);
-
-    playScurrySound();
-    checkCollision();
 }
 
 // ✅ Check Collision with Flower
@@ -132,41 +94,46 @@ document.addEventListener("keydown", (event) => {
     moveRat(event.key);
 });
 
+// ✅ Button Event Listeners (MOVED TO AFTER moveRat() DEFINITION)
+document.getElementById("up").addEventListener("click", () => moveRat("ArrowUp"));
+document.getElementById("down").addEventListener("click", () => moveRat("ArrowDown"));
+document.getElementById("left").addEventListener("click", () => moveRat("ArrowLeft"));
+document.getElementById("right").addEventListener("click", () => moveRat("ArrowRight"));
+
 // ✅ Function to Redirect
 function goToValentinePage() {
     window.location.href = "valentine.html";
 }
 
-
-function sayYes() {
-    document.body.innerHTML = `
-        <div class="valentine-container">
-            <h1>YAY!! ❤️🐭💘</h1>
-            <p>You're the best, my Valentine! 🎉</p>
-            <img class="final-image" src="Pdoc squared (5).png" alt="HAPPY">
-        </div>
-    `;
-}
-
+// ✅ Shrink "No" Button on Click
 function shrinkNo() {
     let noButton = document.getElementById("no-button");
-    let yesButton = document.getElementById("yes-button");
 
     noClickCount++;
 
-    // Keep shrinking "No" button until it disappears
-    let newSize = 5 - noClickCount;  // Every click reduces the font size
+    // Shrinks "No" button until it disappears
+    let newSize = 5 - noClickCount;  
     if (newSize <= 1) {
         noButton.style.display = "none"; // Hides button when too small
+        alert("🥺 Okay... I understand... 💔");
     } else {
         noButton.style.fontSize = newSize + "vw";
         noButton.style.padding = (newSize / 2) + "px " + (newSize * 2) + "px";
     }
-
-    // Increase "Yes" button size
-    yesButton.style.fontSize = (5 + noClickCount) + "vw";
-    yesButton.style.padding = (10 + noClickCount * 2) + "px " + (20 + noClickCount * 4) + "px";
 }
+
+// ✅ YES Button Event
+document.getElementById("yes-button").addEventListener("click", function () {
+    alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
+    document.body.innerHTML = `
+    <div style="text-align: center;">
+        <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
+            <img src="Pdoc_squared_5.png" class="final-image" alt="Click to Download">
+        </a>
+        <p>Click the image to download your special Valentine’s Card ❤️</p>
+    </div>
+    `;
+});
 
 // ✅ Initial Flower Placement
 respawnFlower();
