@@ -132,7 +132,7 @@ document.addEventListener("keydown", (event) => {
 function goToValentinePage() {
     window.location.href = "valentine.html";
 }
-let noClickCount = 0;
+
 
 function sayYes() {
     document.body.innerHTML = `
