@@ -141,12 +141,24 @@ function setupValentinePage() {
     });
 
     yesButton.addEventListener("click", function () {
-        alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
-        document.body.innerHTML = `
+    alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
+
+    // Create Audio Element
+    let song = new Audio("https://SlipperyCondom.github.io/Secret/yay.mp3");  // 🔥 Change to your actual MP3 file path
+    song.loop = true; // 🎵 Loop the music
+    song.volume = 0.8; // 🔊 Adjust volume (0.0 - 1.0)
+    song.play().catch(error => console.error("Music play failed:", error)); 
+
+    // Render Final Image & Download Link
+    document.body.innerHTML = `
         <div style="text-align: center;">
             <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
-                <img src="Pdoc_squared_(5).png" class="final-image" alt="Click to Download">
+                <img src="https://SlipperyCondom.github.io/Secret/Pdoc_squared_5.png" class="final-image" alt="Click to Download">
+            </a>
+            <p>Click the image to download your special Valentine’s Card ❤️</p>
         </div>
-        `;
+    `;
+});
+
     });
 }
