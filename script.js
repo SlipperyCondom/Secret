@@ -91,7 +91,7 @@ function moveRat(direction) {
 
     rat.style.left = `${ratX}px`;
     rat.style.top = `${ratY}px`;
-
+    console.log(`Rat Position: X=${ratX}, Y=${ratY}`);
     // ✅ Add Animation
     rat.classList.add("scurry");
     setTimeout(() => rat.classList.remove("scurry"), 100);
