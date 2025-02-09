@@ -34,7 +34,7 @@ function setupGamePage() {
     // ✅ Load Sound
     const scurrySound = new Audio("Apple.mp3");
     scurrySound.volume = 1.0;
-    scurrySound.playbackRate = 1.0;
+    scurrySound.playbackRate = 1.5;
 
     function playScurrySound() {
         scurrySound.currentTime = 0; // ✅ Restart sound immediately
@@ -111,14 +111,14 @@ function setupGamePage() {
     document.getElementById("right").addEventListener("click", () => moveRat("ArrowRight"));
 
     // ✅ Function to Redirect
-    
+    nextButton.addEventListener("click", function () {
+        window.location.href = "valentine.html";
+    });
 
     // ✅ Initial Flower Placement
     respawnFlower();
 }
-function goToValentinePage() {
-        window.location.href = "valentine.html";
-    }
+
 // ✅ Valentine Page Setup
 function setupValentinePage() {
     let noButton = document.getElementById("no-button");
@@ -141,24 +141,27 @@ function setupValentinePage() {
     });
 
     yesButton.addEventListener("click", function () {
-    alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
+        alert("AH SHIT FR? That's skibbidi ong 😍🎉"); 
 
-    // Create Audio Element
-    let song = new Audio("https://SlipperyCondom.github.io/Secret/yay.mp3");  // 🔥 Change to your actual MP3 file path
-    song.loop = true; // 🎵 Loop the music
-    song.volume = 0.8; // 🔊 Adjust volume (0.0 - 1.0)
-    song.play().catch(error => console.error("Music play failed:", error)); 
+        // ✅ Create Audio Element for Music
+        let song = new Audio("https://SlipperyCondom.github.io/Secret/yay.mp3");  
+        song.loop = true; // 🎵 Loop the music
+        song.volume = 0.8; // 🔊 Adjust volume (0.0 - 1.0)
 
-    // Render Final Image & Download Link
-    document.body.innerHTML = `
-        <div style="text-align: center;">
-            <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
-                <img src="https://SlipperyCondom.github.io/Secret/Pdoc_squared_5.png" class="final-image" alt="Click to Download">
-            </a>
-            <p>Click the image to download your special Valentine’s Card ❤️</p>
-        </div>
-    `;
+        // ✅ Force Play After User Interaction
+        song.play().then(() => {
+            console.log("Music playing!");
+        }).catch(error => {
+            console.error("Music failed to play:", error);
+            alert("Click the page again to play music!");
+        });
 
-
+        // ✅ Render Final Image & Download Link
+        document.body.innerHTML = `
+            <div style="text-align: center;">
+                <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
+                    <img src="https://SlipperyCondom.github.io/Secret/Pdoc_squared_(5).png" class="final-image" alt="Click to Download">
+            </div>
+        `;
     });
 }
