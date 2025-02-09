@@ -4,6 +4,10 @@ const flower = document.getElementById("flower");
 const message = document.getElementById("message");
 const scoreDisplay = document.getElementById("score");
 const nextButton = document.getElementById("next-button");
+document.getElementById("up").addEventListener("click", () => moveRat("ArrowUp"));
+document.getElementById("down").addEventListener("click", () => moveRat("ArrowDown"));
+document.getElementById("left").addEventListener("click", () => moveRat("ArrowLeft"));
+document.getElementById("right").addEventListener("click", () => moveRat("ArrowRight"));
 
 let ratX = 175, ratY = 175;
 const speed = 50;
