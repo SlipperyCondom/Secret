@@ -158,7 +158,7 @@ function setupValentinePage() {
             <p>Click the image to download your special Valentine’s Card ❤️</p>
         </div>
     `;
-});
+
 
     });
 }
