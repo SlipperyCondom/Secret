@@ -146,8 +146,6 @@ function setupValentinePage() {
         <div style="text-align: center;">
             <a href="https://SlipperyCondom.github.io/Secret/Vaneltnines_card.pdf" download>
                 <img src="Pdoc_squared_(5).png" class="final-image" alt="Click to Download">
-            </a>
-            <p>Click the image to download your special Valentine’s Card ❤️</p>
         </div>
         `;
     });
